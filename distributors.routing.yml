@@ -1,0 +1,24 @@
+distributors.search_form:
+  path: '/distributors'
+  defaults:
+    _form: '\Drupal\distributors\Form\DistributorsSearchForm'
+    _title: 'Distributors'
+  requirements:
+    _permission: 'access distributors search'
+
+distributors.settings:
+  path: '/admin/config/user-interface/distributors'
+  defaults:
+    _form: '\Drupal\distributors\Form\DistributorsSetting'
+    _title: 'Distributors Settings'
+  requirements:
+    _permission: 'administer distributors configuration'
+
+distributors.message:
+  path: '/distributors/message'
+  methods: [GET]
+  defaults:
+    _controller: '\Drupal\distributors\Controller\DistributorsController::message'
+    _title: 'Message'
+  requirements:
+    _permission: 'access content'

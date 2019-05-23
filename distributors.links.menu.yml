@@ -1,0 +1,5 @@
+distributors.menu.settings:
+  title: 'Distributors Settings'
+  route_name: distributors.settings
+  parent: system.admin_config_ui
+  description: 'Distributors Map related settings.'

@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * Contains distributors.module
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+
+/**
+ * Implements hook_theme()
+ */
+function distributors_theme() {
+  $themes['distributors_search_form'] = [
+	'render element' => 'form',
+	'template' => 'distributors_search_form'
+  ];
+
+  $themes['distributors_googlemap_results'] = [
+    'variables' => [
+      'map_height' => NULL,
+      'map_width' => NULL,
+    ],
+	'template' => 'distributors_googlemap_results'
+  ];
+
+  return $themes;
+}
+
+
+
+/**
+* Implements hook_views_pre_render().
+*/
+function distributors_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'distributors')) {
+    $view->element['#attached']['library'][] = 'distributors/search_page';
+  }
+}
+
+
+/**
+* Implements hook__library_info_alter().
+*/
+function distributors_library_info_alter(&$libraries, $extension) {
+  if ($extension == 'distributors') {
+    foreach($libraries as $key =>$library) {
+      if($key == 'search_page') {
+        foreach($libraries['search_page']['js'] as $jkey => $row) {
+		  $pos = stripos($jkey, 'maps.googleapis.com/maps/api');
+		  if ($pos !== false) {  //found
+		    //get current language
+  			$language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+			
+			//get api key
+  			$config = \Drupal::config('distributors.settings');
+  			$api_key = $config->get('api_key');
+  			
+  			$newkey = '//maps.googleapis.com/maps/api/js?libraries=places&key='.$api_key.'&language='.$language;
+			if($newkey != $jkey) {
+			  $libraries['search_page']['js'][$newkey] = $libraries['search_page']['js'][$jkey];
+			  unset($libraries['search_page']['js'][$jkey]);
+			}
+			break;
+		  }
+        }
+        break;
+      }
+    }
+  }
+
+}

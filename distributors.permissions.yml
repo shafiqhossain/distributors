@@ -1,0 +1,7 @@
+access distributors search:
+  title: 'Access Distributors Search'
+  restrict access: TRUE
+
+administer distributors configuration:
+  title: 'Administer Distributors Configuration'
+  restrict access: TRUE

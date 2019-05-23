@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Contains distributors.install
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+
+
+/**
+* Implements hook_requirements().
+*/
+function distributors_requirements($phase) {
+  $requirements = array();
+
+  // Report Drupal version
+  if ($phase == 'install') {
+	$info = \Drupal\node\Entity\NodeType::load('distributor');
+
+	if($info != false) {
+      $requirements['distributor'] = array(
+        'title' => t('Distributors module'),
+        'description' => t('Distributor content type already exists! Please delete the distributor content type first, in order to install the module.'),
+        'value' => t('1.0'),
+        'severity' => REQUIREMENT_ERROR,
+      );
+    }
+    else {
+      $requirements['distributor'] = array(
+        'title' => t('Distributors module'),
+        'description' => t('Distributor module installed successfully!'),
+        'value' => t('1.0'),
+        'severity' => REQUIREMENT_OK,
+      );
+    }
+  }
+
+  return $requirements;
+}

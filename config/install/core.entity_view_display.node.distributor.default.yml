@@ -1,0 +1,98 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.distributor.body
+    - field.field.node.distributor.field_address
+    - field.field.node.distributor.field_contact_email_address
+    - field.field.node.distributor.field_location
+    - field.field.node.distributor.field_phone_number
+    - field.field.node.distributor.field_website
+    - node.type.distributor
+  module:
+    - address
+    - geolocation
+    - text
+    - user
+id: node.distributor.default
+targetEntityType: node
+bundle: distributor
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_address:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_contact_email_address:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_location:
+    weight: 105
+    label: above
+    settings:
+      title: ''
+      set_marker: '1'
+      common_map: ''
+      info_text: ''
+      use_overridden_map_settings: 0
+      google_map_settings:
+        type: ROADMAP
+        zoom: '10'
+        minZoom: 0
+        maxZoom: 18
+        rotateControl: 0
+        mapTypeControl: 1
+        streetViewControl: 1
+        zoomControl: 1
+        fullscreenControl: 0
+        scrollwheel: 1
+        disableDoubleClickZoom: 0
+        draggable: 1
+        height: 400px
+        width: 100%
+        info_auto_display: 1
+        marker_icon_path: ''
+        disableAutoPan: 1
+        style: ''
+        preferScrollingToZooming: 0
+        gestureHandling: auto
+    third_party_settings: {  }
+    type: geolocation_map
+    region: content
+  field_phone_number:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_website:
+    weight: 107
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,12 @@
+name: Distributors
+type: module
+description: A distributors search module
+core: 8.x
+package: GeoLocation
+
+dependencies:
+  - node
+  - views
+  - address
+  - geolocation
+

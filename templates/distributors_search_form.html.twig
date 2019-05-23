@@ -1,0 +1,24 @@
+<div id="distributors-search-form-wrapper" class="distributors-search">
+    <div class="distributors-search-box">
+        <div class="location-icon">{{ form.location }}</div>
+        <div class="input-group">
+            {{ form.address_box }}
+            <div class="input-group-append">
+                {{ form.search }}
+            </div>
+        </div>
+    </div>
+    <div class="distributors-search-results-box" id="distributors-search-results-wrapper">
+        {{ form.results }}
+    </div>
+    <div class="distributors-results-wrapper">
+        <div class="no-results">{{ form.no_results }}</div>
+        <div class="distributors-search-list-grid" id="distributors-search-list-grid-wrapper">
+            {{ form.lists }}
+        </div>
+    </div>
+</div>
+{{ form.form_build_id }}
+{{ form.form_id }}
+{{ form.form_token }}
+{{ form.actions }}
