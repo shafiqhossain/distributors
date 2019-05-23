@@ -1,6 +1,6 @@
 # Distributors
 Show distributors over google map.
-This is an example on how you can show your distributors over the google map within a proximity range. Based on number of distributors, google map zoom level will auto adjusted.
+This is an example on how you can show your distributors over the google map within a proximity range. Based on number of distributors, google map zoom level will auto adjusted. This example is based on Drupal 8.x
 
 Installation:
 1. Place the module into /modules folder
