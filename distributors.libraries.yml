@@ -4,7 +4,7 @@ search_page:
     theme:
       distributors.css: {}
   js:
-    //maps.googleapis.com/maps/api/js?libraries=places&key=WWUzaSyD10wlvLLzUMFHSYFOF04i-xYz1PB1ZFR&language=en: {type: external, minified: true, weight: -30}
+    //maps.googleapis.com/maps/api/js?libraries=places&key=YOUR-API-KEY&language=en: {type: external, minified: true, weight: -30}
     /libraries/v3-utility-library/markerclusterer/src/markerclusterer.js: {}
     vendor/ubilabs-geocomplete/jquery.geocomplete.js: {weight: -20}
     distributors.js: {weight: -10}
